@@ -1,0 +1,3 @@
+http://www.obviously.com/gis/shp2text/
+http://pages.globetrotter.net/roule/utmgoogle.htm
+http://www.tech-recipes.com/rx/2403/google_maps_get_latitude_longitude_values/
