@@ -1,0 +1,16 @@
+function drawCharts() {
+    <% @tables.each do |table| %>
+        $("#graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
+        var values = new Array();
+        <% table.rows.each do |row| %>
+            <% unless row.name.match('[Tt]otal') %>
+                <% column = @ward.column_for(row) %>
+                values.push({name: '<%= escape_javascript(row.name) %>', value: <%= column.value %>})
+            <% end %>
+        <% end %>
+        drawChart('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 300, 300, 12, values);
+    <% end %>
+    $("#ward_name").html("<%= @ward.name %>");
+    $("#graph_space").fadeIn("fast");
+}
+$("#graph_space").fadeOut("fast", drawCharts);

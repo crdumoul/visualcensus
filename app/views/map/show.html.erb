@@ -6,8 +6,9 @@
 <title>Ottawa Wards</title>
 <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
 <%= stylesheet_link_tag "visualcensus" %>
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<%= javascript_include_tag 'jquery', 'application' %>
 <script type="text/javascript">
 
   function initialize() {
@@ -23,7 +24,7 @@
 
     var map = new google.maps.Map(document.getElementById("map_canvas"),
         mapOptions);
-	
+
 	<% @wards.each_with_index do |ward, index| %>
 	   <% pathName = "ward" + index.to_s + "Coords" %>
 	   <% wardName = "ward" + index.to_s %>
@@ -32,7 +33,8 @@
 		      new google.maps.LatLng(<%= point.lat %>, <%= point.lon %>)<% if pindex+1 < ward.points.length %>,<% end -%>
 		   <% end %>
 	   ];
-	   var <%= wardName %> = new google.maps.Polygon({
+
+       var <%= wardName %> = new google.maps.Polygon({
 		   paths: <%= pathName %>,
 		   strokeColor: "#FF0000",
 		   strokeOpacity: 0.8,
@@ -41,14 +43,14 @@
 		   fillOpacity: 0.35
 	   });
 	   <%= wardName %>.setMap(map);
-	   google.maps.event.addListener(<%= wardName %>, 'mouseover', function() {
+       google.maps.event.addListener(<%= wardName %>, 'mouseover', function() {
 	       <%= wardName %>.setOptions({fillOpacity: 0.7})
 	   });
 	   google.maps.event.addListener(<%= wardName %>, 'mouseout', function() {
            <%= wardName %>.setOptions({fillOpacity: 0.35})
        });
 	   google.maps.event.addListener(<%= wardName %>, 'click', function() {
-           $("#graph_space").html("<p><%= ward.name %></p>");
+           $.post("/map/by_age_group/<%= ward.id %>", null, null, "script");
        });
 	<% end %>
   }
@@ -57,7 +59,7 @@
 <body onload="initialize()">
   <div id="map_canvas""></div>
   <div id="graph_space">
-  	<div id="age_graph"></div>
+    <p id="ward_name"></p>
   </div>
 </body>
 </html>
