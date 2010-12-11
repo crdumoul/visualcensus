@@ -1,16 +1,28 @@
-function drawCharts() {
-    <% @tables.each do |table| %>
-        $("#graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
+function drawChartsForWard() {
+    <% @pie_tables.each do |table| %>
+        $("#ward_graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
         var values = new Array();
-        <% table.rows.each do |row| %>
-            <% unless row.name.match('[Tt]otal') %>
-                <% column = @ward.column_for(row) %>
-                values.push({name: '<%= escape_javascript(row.name) %>', value: <%= column.value %>})
-            <% end %>
+        <% table.regular_rows.each do |row| %>
+            <% column = @ward.column_for(row) %>
+            values.push({name: '<%= escape_javascript(row.name) %>', value: <%= column.value %>})
         <% end %>
-        drawChart('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 300, 300, 12, values);
+        drawPie('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 500, 500, 12, values);
     <% end %>
+
+    <% @percent_tables.each do |table| %>
+        $("#ward_graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
+        var values = new Array();
+        <% total_column = @ward.column_for(table.total_row) %>
+        <% table.regular_rows.each do |row| %>
+            <% column = @ward.column_for(row) %>
+            values.push({name: '<%= escape_javascript(row.name) %>', value: <%= ((column.value*1.0) / total_column.value) * 100 %>})
+        <% end %>
+        drawColumn('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 500, 500, '', 'Percent', values);
+    <% end %>
+
     $("#ward_name").html("<%= @ward.name %>");
-    $("#graph_space").fadeIn("fast");
+    $("#ward_graph_space").fadeIn("fast");
+    $(".name_div").css({"width": "45%", "margin-left": "auto", "margin-right": "auto"});
 }
-$("#graph_space").fadeOut("fast", drawCharts);
+
+$("#ward_graph_space").fadeOut("fast", drawChartsForWard);

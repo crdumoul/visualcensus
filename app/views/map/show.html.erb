@@ -11,10 +11,33 @@
 <%= javascript_include_tag 'jquery', 'application' %>
 <script type="text/javascript">
 
+    function drawChartsForOttawa() {
+        <% @pie_tables.each do |table| %>
+            $("#ottawa_graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
+            var values = new Array();
+            <% table.regular_rows.each do |row| %>
+                <% column = @ottawa.column_for(row) %>
+                values.push({name: '<%= escape_javascript(row.name) %>', value: <%= column.value %>})
+            <% end %>
+            drawPie('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 500, 500, 12, values);
+        <% end %>
+
+        <% @percent_tables.each do |table| %>
+            $("#ottawa_graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
+            var values = new Array();
+            <% total_column = @ottawa.column_for(table.total_row) %>
+            <% table.regular_rows.each do |row| %>
+                <% column = @ottawa.column_for(row) %>
+                values.push({name: '<%= escape_javascript(row.name) %>', value: <%= ((column.value*1.0) / total_column.value) * 100 %>})
+            <% end %>
+            drawColumn('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 500, 500, '', 'Percent', values);
+        <% end %>
+    }
+
   function initialize() {
-    var ottawaLatLng = new google.maps.LatLng(45.33, -75.7);
+    var ottawaLatLng = new google.maps.LatLng(45.33, -75.8);
 	var mapOptions = {
-      zoom: 10,
+      zoom: 9,
       center: ottawaLatLng,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
 	  mapTypeControl: false,
@@ -53,13 +76,33 @@
            $.post("/map/by_age_group/<%= ward.id %>", null, null, "script");
        });
 	<% end %>
+    drawChartsForOttawa();
+
+    $("#minimizer").toggle(function() {
+        $("#top_div").animate({width:"0px", height:"0px"}, "fast");
+		$(this).attr({src:"/images/plus-icon.gif"});
+        $("#click_me").hide("fast");
+	},function() {
+		$(this).attr({src:"/images/minus-icon.gif"});
+        $("#top_div").animate({width:"400px", height:"200px"}, "fast");
+        $("#click_me").show("fast");
+    });
   }
 </script>
 </head>
 <body onload="initialize()">
-  <div id="map_canvas""></div>
-  <div id="graph_space">
-    <p id="ward_name"></p>
+  <div id="top_div">
+    <div id="map_canvas"></div>
+    <p id="click_me">Click on a ward</p>
+    <%= image_tag 'minus-icon.gif', :id => 'minimizer' %>
+  </div>
+  <div id="bottom_div">
+    <div class="graph_space" id="ward_graph_space">
+      <p id="ward_name" class="name"></p>
+    </div>
+    <div class="graph_space" id="ottawa_graph_space">
+      <p class="name">Ottawa</p>
+    </div>
   </div>
 </body>
 </html>
