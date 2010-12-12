@@ -1,28 +1,28 @@
 function drawChartsForWard() {
     <% @pie_tables.each do |table| %>
-        $("#ward_graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
         var values = new Array();
         <% table.regular_rows.each do |row| %>
             <% column = @ward.column_for(row) %>
             values.push({name: '<%= escape_javascript(row.name) %>', value: <%= column.value %>})
         <% end %>
-        drawPie('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 500, 500, 12, values);
+        drawPie('ward_table_div_<%= table.id %>', values);
     <% end %>
 
     <% @percent_tables.each do |table| %>
-        $("#ward_graph_space").append('<div class="table_div" id="table_div_<%= table.id %>"></div>');
         var values = new Array();
         <% total_column = @ward.column_for(table.total_row) %>
         <% table.regular_rows.each do |row| %>
             <% column = @ward.column_for(row) %>
             values.push({name: '<%= escape_javascript(row.name) %>', value: <%= ((column.value*1.0) / total_column.value) * 100 %>})
         <% end %>
-        drawColumn('table_div_<%= table.id %>', '<%= escape_javascript(table.name) %>', 500, 500, '', 'Percent', values);
+        drawColumn('ward_table_div_<%= table.id %>', '', 'Percent', values);
     <% end %>
-
-    $("#ward_name").html("<%= @ward.name %>");
-    $("#ward_graph_space").fadeIn("fast");
-    $(".name_div").css({"width": "45%", "margin-left": "auto", "margin-right": "auto"});
 }
 
-$("#ward_graph_space").fadeOut("fast", drawChartsForWard);
+function doStuff() {
+    $("#ward_name").html("<%= @ward.name %>");
+    drawChartsForWard();
+    $("#ward_name").fadeTo(400, 1);
+    $(".ward_table_div").fadeTo(400, 1);
+}
+setTimeout(doStuff, 10);

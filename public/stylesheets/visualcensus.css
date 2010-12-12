@@ -3,47 +3,52 @@
     width: 400px;
     height: 200px;
     position: fixed;
-    top: 10px;
+    bottom: 25px;
     right: 10px;
     border-style: solid;
     border-width: 18px;
-    border-color: #000055;
+    border-color: #000066;
     border-radius: 20px;
+    -moz-border-radius: 20px;
+}
+
+#census_title {
+    text-align: center;
+    margin: 0;
+    color: #000066;
 }
 
 #minimizer {
     margin: 20px;
     float: right;
+    width: 20px;
+    height: 20px;
 }
 
 #click_me {
     margin: 20px;
     float: left;
-}
-
-#ward_graph_space {
-    float: left;
-    /*border-radius: 20px;
-    border-style: solid;
-    border-width: 5px;*/
-}
-
-.graph_space {
-    width: 45%;
-    margin-left: auto;
-    margin-right: auto;
-    float: left;
+    font-size: 1.25em;
 }
 
 .name {
     font-size: 2em;
+    text-align: center;
+    color: #000066;
 }
 
-.table_div {
-    /*float: left;*/
+.table_name {
+    font-size: 1.5em;
+    color: #000066;
 }
 
-p {
-    padding: 0;
-    margin: 0;
+#graph_table {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 18px;
+    border-color: #000066;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
 }

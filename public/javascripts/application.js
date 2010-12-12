@@ -18,22 +18,33 @@ function buildData(values) {
     return data;
 }
 
-function drawPie(div, title, width, height, fontSize, values) {
+function drawPie(div, values) {
     var data = buildData(values);
     var chart = new google.visualization.PieChart(document.getElementById(div));
-    chart.draw(data, {title: title, width: width, height: height, legend: 'none',
-                      chartArea: {left:'10%', top:'10%', width: '80%', height: '80%'},
-                      titleTextStyle: {color: 'black', fontSize: 16},
-                      pieSliceTextStyle: {color: 'black', fontSize: fontSize},
+    chart.draw(data, {width: 500, height: 400, legend: 'none',
+                      chartArea: {width: '80%', height: '100%'},
+                      pieSliceTextStyle: {color: 'black', fontSize: 12},
                       tooltipTextStyle: {color: 'black', fontSize: 16}});
 }
 
-function drawColumn(div, title, width, height, x_axis, y_axis, values) {
+function drawColumn(div, x_axis, y_axis, values) {
     var data = buildData(values);
     var chart = new google.visualization.ColumnChart(document.getElementById(div));
-    chart.draw(data, {title: title, width: width, height: height, legend: 'none',
-                      titleTextStyle: {fontSize: 16},
+    chart.draw(data, {width: 500, height: 500, legend: 'none',
+                      chartArea: {left:'10%', top:'5%', width: '90%', height: '75%'},
                       hAxis: {title: x_axis, slantedTextAngle: 60, textStyle: {fontSize: 16}},
                       vAxis: {title: y_axis}, textStyle: {fontSize: 16},
                       tooltipTextStyle: {fontSize: 16}});
 }
+
+$(document).ready(function () {
+    $("#minimizer").toggle(function() {
+        $("#top_div").animate({width:"0px", height:"0px"}, "fast");
+        $(this).attr({src:"/images/up_chevron.jpg"});
+        $("#click_me").hide("fast");
+    },function() {
+        $(this).attr({src:"/images/down_chevron.jpg"});
+        $("#top_div").animate({width:"400px", height:"200px"}, "fast");
+        $("#click_me").show("fast");
+    });
+});
