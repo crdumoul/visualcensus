@@ -1,0 +1,27 @@
+function drawChartsForWard() {
+    <% category.absolute_tables.each do |table| %>
+        <% table.regular_rows.each do |row| %>
+            <% column = ward.column_for(row) %>
+            $("#ward_row_div_<%= row.id %>").html("<p class=\"absolute_value\"><%= column.value %></p>");
+        <% end %>
+    <% end %>
+    <% category.tables.each do |table| %>
+        <% if table.table_type == Table::PIE_TYPE %>
+            var values = new Array();
+            <% table.regular_rows.each do |row| %>
+                <% column = ward.column_for(row) %>
+                values.push({name: '<%= escape_javascript(row.name) %>', value: <%= column.value %>})
+            <% end %>
+            drawPie('ward_table_div_<%= table.id %>', values);
+        <% elsif table.table_type == Table::PERCENT_TYPE %>
+            var values = new Array();
+            <% total_column = ward.column_for(table.total_row) %>
+            <% table.regular_rows.each do |row| %>
+                <% column = ward.column_for(row) %>
+                values.push({name: '<%= escape_javascript(row.name) %>', value: <%= ((column.value*1.0) / total_column.value) * 100 %>})
+            <% end %>
+            drawColumn('ward_table_div_<%= table.id %>', '', 'Percent', values);
+        <% end %>
+    <% end %>
+    $("#ward_name").html("<%= ward.name %>");
+}

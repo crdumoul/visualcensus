@@ -46,6 +46,42 @@ module MigrationStrings
     TABLE_NAMES['Household income in 2005 of private households']
   ]
 
+  POPULATION_TABLES = [
+    TABLE_NAMES['Population'],
+    TABLE_NAMES['Total population by age groups'],
+    TABLE_NAMES['Male, total'],
+    TABLE_NAMES['Female, total'],
+    TABLE_NAMES['Total number of children at home'],
+    TABLE_NAMES['Total Population by Mother Tongue'],
+    TABLE_NAMES['Total - Mobility status 1 year ago'],
+    TABLE_NAMES['Total - Mobility status 5 years ago'],
+    TABLE_NAMES['Total population by immigrant status and place of birth'],
+    TABLE_NAMES['Total population by ethnic origin'],
+    TABLE_NAMES['Total population 15 years and over by highest certificate, diploma or degree']
+  ]
+
+  HOUSING_TABLES = [
+    TABLE_NAMES['Total number of occupied private dwellings'],
+    TABLE_NAMES['Structural Type'],
+    TABLE_NAMES['Tenure'],
+    TABLE_NAMES['Period of construction'],
+    TABLE_NAMES['Total number of private households by household size']
+  ]
+
+  EMPLOYMENT_TABLES = [
+    TABLE_NAMES['Total population 15 years and over by labour force activity'],
+    TABLE_NAMES['Total labour force 15 years and over by occupation'],
+    TABLE_NAMES['Total employment within ward by major sectors*'],
+    TABLE_NAMES['Total employed labour force 15 years and over with usual place of work or no fixed workplace address by mode of transportation']
+  ]
+
+  INCOME_TABLES = [
+    TABLE_NAMES['Total income in 2005 of population 15 years and over'],
+    TABLE_NAMES['Total income in 2005 of males 15 years and over'],
+    TABLE_NAMES['Total income in 2005 of females 15 years and over'],
+    TABLE_NAMES['Household income in 2005 of private households']
+  ]
+
   TOTAL_ROWS = [
     'Total population',
     'Male, total',
@@ -60,7 +96,11 @@ module MigrationStrings
     'Total population 15 years and over',
     'Labour force 15 years and over',
     'Total 2006 employment',
-    'Total employed labour force 15 years'
+    'Total employed labour force 15 years',
+    'Total income in 2005 of population 15 years and over',
+    'Total income in 2005 of males 15 years and over',
+    'Total income in 2005 of females 15 years and over',
+    'Household income in 2005 of private households'
   ]
 
   def MigrationStrings.census_uri(ward_number=1)

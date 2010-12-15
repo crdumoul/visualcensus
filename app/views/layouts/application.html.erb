@@ -50,26 +50,18 @@
                <%= wardName %>.setOptions({fillOpacity: 0.35})
            });
            google.maps.event.addListener(<%= wardName %>, 'click', function() {
-               $("#ward_name").fadeTo(400, 0);
-               $(".ward_table_div").fadeTo(400, 0);
-               $.post("/map/by_age_group/<%= ward.id %>", null, null, "script");
+               $("#ward_name").fadeTo(200, 0);
+               $(".ward_table_div").fadeTo(200, 0, function() {
+                   $.post("/map/ward/<%= ward.id %>", null, null, "script");
+               });
            });
         <% end %>
       }
     </script>
 </head>
 
-<body onload="initialize(); drawChartsForOttawa();">
-
-  <div id="top_div">
-    <div id="map_canvas"></div>
-    <p id="click_me">Click on a ward</p>
-    <%= image_tag 'down_chevron.jpg', :id => 'minimizer' %>
-  </div>
-<h1 id="census_title">Ottawa 2006 Census Data</h1>
-
+<body onload="initialize(); drawChartsForOttawa(); drawChartsForWard();">
 <%= yield %>
-
 </body>
 </html>
 

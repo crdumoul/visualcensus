@@ -1,0 +1,20 @@
+<div id="map_div">
+    <div id="map_canvas"></div>
+    <p id="click_me">Click on a ward</p>
+    <%= image_tag 'down_chevron.jpg', :id => 'minimizer' %>
+</div>
+<h1 id="census_title">Ottawa 2006 Census Data</h1>
+<ul id="tab_list">
+    <%= render :partial => 'category_tabs', :locals => {:categories => @categories, :current_category => @current_category} %>
+</ul>
+<div id="graph_div">
+    <script type="text/javascript">
+        <%= render :partial => 'ottawa_charts.js', :locals => {:category => @category, :ottawa => @ottawa } %>
+        <% if @ward %>
+            <%= render :partial => 'ward_charts.js', :locals => {:category => @category, :ward => @ward } %>
+        <% else %>
+            function drawChartsForWard() {}
+        <% end %>
+    </script>
+    <%= render :partial => 'graph_table', :locals => {:category => @category} %>
+</div>

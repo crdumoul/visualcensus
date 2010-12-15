@@ -1,5 +1,6 @@
 class Table < ActiveRecord::Base
   has_many :rows
+  belongs_to :category
 
   PIE_TYPE = 'pie'
   PERCENT_TYPE = 'percent'
