@@ -1,12 +1,15 @@
 
-$("#graph_div").html("<%= escape_javascript(render(:partial => 'graph_table', :locals => {:category => @category})) %>");
-$("#tab_list").html("<%= escape_javascript(render(:partial => 'category_tabs', :locals => {:categories => @categories, :current_category => @current_category})) %>");
-<%= render :partial => 'ottawa_charts', :locals => {:category => @category, :ottawa => @ottawa } %>
-drawChartsForOttawa();
-<% if @ward %>
-    <%= render :partial => 'ward_charts', :locals => {:category => @category, :ward => @ward } %>
-    drawChartsForWard();
-<% end %>
-$(".table_row").fadeTo(200, 1);
-$(".table_name").fadeTo(200, 1);
-setupCategoryLinks();
+function setCategory() {
+    $("#graph_div").html("<%= escape_javascript(render(:partial => 'graph_table', :locals => {:category => @category})) %>");
+    $("#tab_list").html("<%= escape_javascript(render(:partial => 'category_tabs', :locals => {:categories => @categories, :current_category => @current_category})) %>");
+    <%= render :partial => 'ottawa_charts', :locals => {:category => @category, :ottawa => @ottawa } %>
+    drawChartsForOttawa();
+    <% if @ward %>
+        <%= render :partial => 'ward_charts', :locals => {:category => @category, :ward => @ward } %>
+        drawChartsForWard();
+    <% end %>
+    $(".table_row").fadeTo(200, 1);
+    $(".table_name").fadeTo(200, 1);
+    setupCategoryLinks();
+}
+setTimeout(setCategory, 100);
