@@ -18,7 +18,8 @@ function drawChartsForWard() {
             <% total_column = ward.column_for(table.total_row) %>
             <% table.regular_rows.each do |row| %>
                 <% column = ward.column_for(row) %>
-                values.push({name: '<%= escape_javascript(row.name) %>', value: <%= ((column.value*1.0) / total_column.value) * 100 %>})
+                values.push({name: '<%= escape_javascript(row.name) %>',
+                             value: <%= number_with_precision(((column.value*1.0) / total_column.value) * 100, :precision => 1) %>})
             <% end %>
             drawColumn('ward_table_div_<%= table.id %>', '', 'Percent', values);
         <% end %>
