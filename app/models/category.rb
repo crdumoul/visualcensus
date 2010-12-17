@@ -13,9 +13,17 @@ class Category < ActiveRecord::Base
       type_tables Table::ABSOLUTE_TYPE
     end
 
+    def tables
+      Table.find(:all,
+                 :conditions => ['category_id = ?', id],
+                 :order => 'id')
+    end
+
 private
     def type_tables(type)
-      Table.find(:all, :conditions => ['category_id = ? and table_type = ?', id, type])
+      Table.find(:all,
+                 :conditions => ['category_id = ? and table_type = ?', id, type],
+                 :order => 'id')
     end
 
 end

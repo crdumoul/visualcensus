@@ -8,7 +8,9 @@ class Table < ActiveRecord::Base
   OTHER_TYPE = 'other'
 
   def regular_rows
-    Row.find(:all, :conditions => ['table_id = ? and row_type = ?', id, Row::NORMAL_TYPE])
+    Row.find(:all,
+             :conditions => ['table_id = ? and row_type = ?', id, Row::NORMAL_TYPE],
+             :order => 'id')
   end
 
   def total_row
