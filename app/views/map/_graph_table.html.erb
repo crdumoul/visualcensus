@@ -1,22 +1,29 @@
-<table id="graph_table">
+<table class="ward_names_table">
     <tr>
         <th id="ottawa_name" class="name">Ottawa</th>
         <th id="ward_name" class="name"></th>
     </tr>
-    <% category.tables.each do |table| %>
-        <% if table.table_type == Table::PIE_TYPE %>
-            <%= render :partial => 'table_row', :locals => {:table => table } %>
-        <% elsif table.table_type == Table::PERCENT_TYPE %>
-            <%= render :partial => 'table_row', :locals => {:table => table } %>
-        <% end %>
-    <% end %>
-    <% category.absolute_tables.each do |table| %>
+</table>
+<% category.absolute_tables.each do |table| %>
+    <table class="graph_table absolute_table">
+        <tr><th class="table_name" colspan=3><%= table.name %></th></tr>
         <% table.regular_rows.each do |row| %>
-            <tr><th class="table_name" colspan=2><%= h row.name %></th></tr>
             <tr class="table_row">
-                <td><div class="row_div" id="ottawa_row_div_<%= row.id %>"></div></td>
-                <td><div class="row_div ward_row_div" id="ward_row_div_<%= row.id %>"></div></td>
+                <td class="row_div" id="ottawa_row_div_<%= row.id %>"></td>
+                <td class="row_name row_div"><%= h row.name %></td>
+                <td class="row_div ward_table_div ward_row_div" id="ward_row_div_<%= row.id %>"></td>
             </tr>
         <% end %>
+    </table>
+<% end %>
+<% category.tables.each do |table| %>
+    <% if table.table_type == Table::PIE_TYPE %>
+        <table class="graph_table">
+            <%= render :partial => 'table_row', :locals => {:table => table } %>
+        </table>
+    <% elsif table.table_type == Table::PERCENT_TYPE %>
+        <table class="graph_table">
+            <%= render :partial => 'table_row', :locals => {:table => table } %>
+        </table>
     <% end %>
-</table>
+<% end %>

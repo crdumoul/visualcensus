@@ -103,6 +103,20 @@ module MigrationStrings
     'Household income in 2005 of private households'
   ]
 
+  ROW_NAMES = {
+    'Usual resident population - 100% data' => 'Usual Residents',
+    'Total population excluding institutional residents 20% sample data' => 'Excluding Institutional Residents',
+    'Total dwellings' => 'Total Dwellings',
+    'Median income $ -' => 'Median Income',
+    'Average income $ -' => 'Average Income',
+    'Median after-tax income $ -' => 'Median After-Tax Income',
+    'Average after-tax income $ -' => 'Average After-Tax Income',
+    'Median household income $ -' => 'Median Household Income',
+    'Average household income $ -' => 'Average Household Income',
+    'Median after-tax household income $ -' => 'Median After-Tax Household Income',
+    'Average after-tax household income $ -' => 'Average After-Tax Household Income'
+  }
+
   def MigrationStrings.census_uri(ward_number=1)
     'http://www.ottawa.ca/residents/statistics/census/wards/wardX_en.html'.sub(/X/, ward_number.to_s)
   end

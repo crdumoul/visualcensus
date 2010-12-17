@@ -2,7 +2,8 @@ function drawChartsForOttawa() {
     <% category.absolute_tables.each do |table| %>
         <% table.regular_rows.each do |row| %>
             <% column = ottawa.column_for(row) %>
-            $("#ottawa_row_div_<%= row.id %>").html("<p class=\"absolute_value\"><%= column.value %></p>");
+            <% value = row.name.include?('Income') ? number_to_currency(column.value, :precision => 0) : number_with_delimiter(column.value) %>
+            $("#ottawa_row_div_<%= row.id %>").html("<p class=\"absolute_value ottawa_absolute_value\"><%= value %></p>");
         <% end %>
     <% end %>
     <% category.tables.each do |table| %>

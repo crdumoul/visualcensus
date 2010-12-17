@@ -2,7 +2,8 @@ function drawChartsForWard() {
     <% category.absolute_tables.each do |table| %>
         <% table.regular_rows.each do |row| %>
             <% column = ward.column_for(row) %>
-            $("#ward_row_div_<%= row.id %>").html("<p class=\"absolute_value\"><%= column.value %></p>");
+            <% value = row.name.include?('Income') ? number_to_currency(column.value, :precision => 0) : number_with_delimiter(column.value) %>
+            $("#ward_row_div_<%= row.id %>").html("<p class=\"absolute_value ward_absolute_value\"><%= value %></p>");
         <% end %>
     <% end %>
     <% category.tables.each do |table| %>
