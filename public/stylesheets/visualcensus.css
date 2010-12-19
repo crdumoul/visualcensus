@@ -11,6 +11,7 @@
     border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
+    z-index: 10;
 }
 
 #census_title {
@@ -128,11 +129,11 @@ ul#tab_list li a:link {
     margin-right: 10px;
 }
 
-.ottawa_absolute_value {
+.ward1_absolute_value {
     text-align: right;
 }
 
-.ward_absolute_value {
+.ward2_absolute_value {
     text-align: left;
 }
 

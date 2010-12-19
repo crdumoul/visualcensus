@@ -51,8 +51,8 @@
            });
            google.maps.event.addListener(<%= wardName %>, 'click', function() {
                $("#loading_dialog").show();
-               $("#ward_name").fadeTo(200, 0);
-               $(".ward_table_div").fadeTo(200, 0, function() {
+               $("#ward2_name").fadeTo(200, 0);
+               $(".ward2_table_div").fadeTo(200, 0, function() {
                    $.post("/map/ward/<%= ward.id %>", null, null, "script");
                });
            });
@@ -61,7 +61,7 @@
     </script>
 </head>
 
-<body onload="initialize(); drawChartsForOttawa(); drawChartsForWard();">
+<body onload="initialize(); drawChartsForWard1(); drawChartsForWard2();">
 <%= yield %>
 </body>
 </html>

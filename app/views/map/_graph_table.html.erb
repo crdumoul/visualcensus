@@ -1,7 +1,7 @@
 <table class="ward_names_table">
     <tr>
-        <th id="ottawa_name" class="name">Ottawa</th>
-        <th id="ward_name" class="name"></th>
+        <th id="ward1_name" class="name">Ottawa</th>
+        <th id="ward2_name" class="name"></th>
     </tr>
 </table>
 <% category.absolute_tables.each do |table| %>
@@ -9,9 +9,9 @@
         <tr><th class="table_name" colspan=3><%= table.name %></th></tr>
         <% table.regular_rows.each do |row| %>
             <tr class="table_row">
-                <td class="row_div" id="ottawa_row_div_<%= row.id %>"></td>
+                <td class="row_div ward1_table_div ward1_row_div" id="ward1_row_div_<%= row.id %>"></td>
                 <td class="row_name row_div"><%= h row.name %></td>
-                <td class="row_div ward_table_div ward_row_div" id="ward_row_div_<%= row.id %>"></td>
+                <td class="row_div ward2_table_div ward2_row_div" id="ward2_row_div_<%= row.id %>"></td>
             </tr>
         <% end %>
     </table>

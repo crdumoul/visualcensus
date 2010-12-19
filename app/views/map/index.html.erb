@@ -9,11 +9,11 @@
 </ul>
 <div id="graph_div">
     <script type="text/javascript">
-        <%= render :partial => 'ottawa_charts.js', :locals => {:category => @category, :ottawa => @ottawa } %>
-        <% if @ward %>
-            <%= render :partial => 'ward_charts.js', :locals => {:category => @category, :ward => @ward } %>
+        <%= render :partial => 'ward_charts.js', :locals => {:category => @category, :ward => @ward1, :which_ward => 1 } %>
+        <% if @ward2 %>
+            <%= render :partial => 'ward_charts.js', :locals => {:category => @category, :ward => @ward2, :which_ward => 2 } %>
         <% else %>
-            function drawChartsForWard() {}
+            function drawChartsForWard2() {}
         <% end %>
     </script>
     <%= render :partial => 'graph_table', :locals => {:category => @category} %>

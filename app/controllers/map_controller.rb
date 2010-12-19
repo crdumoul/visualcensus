@@ -1,11 +1,4 @@
 class MapController < ApplicationController
-  before_filter :instantiate_controller_and_action_names
-
-  def instantiate_controller_and_action_names
-    @current_action = action_name
-    @current_controller = controller_name
-  end
-
   def index
     if session[:category_id]
       @category = Category.find(session[:category_id])
@@ -16,14 +9,16 @@ class MapController < ApplicationController
     @current_category = session[:category_id]
     @categories = Category.all
     @wards = Ward.find(:all, :conditions => "name != 'Ottawa'")
-    @ward = Ward.find(session[:ward_id]) if session[:ward_id]
-    @ottawa = Ward.find_by_name('Ottawa')
+
+    @ward2 = Ward.find(session[:ward2_id]) if session[:ward2_id]
+    @ward1 = Ward.find_by_name('Ottawa')
   end
 
   def ward
-    session[:ward_id] = params[:id]
+    session[:ward2_id] = params[:id]
     @category = Category.find(session[:category_id])
-    @ward = Ward.find(session[:ward_id])
+    @ward2 = Ward.find(session[:ward2_id])
+    @which_ward = 2
     respond_to do |format|
       format.js
     end
@@ -34,8 +29,8 @@ class MapController < ApplicationController
     @current_category = session[:category_id]
     @categories = Category.all
     @category = Category.find(session[:category_id])
-    @ward = Ward.find(session[:ward_id]) if session[:ward_id]
-    @ottawa = Ward.find_by_name('Ottawa')
+    @ward2 = Ward.find(session[:ward2_id]) if session[:ward2_id]
+    @ward1 = Ward.find_by_name('Ottawa')
     respond_to do |format|
       format.js
     end

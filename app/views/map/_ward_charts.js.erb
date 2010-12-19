@@ -1,9 +1,9 @@
-function drawChartsForWard() {
+function drawChartsForWard<%= which_ward %>() {
     <% category.absolute_tables.each do |table| %>
         <% table.regular_rows.each do |row| %>
             <% column = ward.column_for(row) %>
             <% value = row.name.include?('Income') ? number_to_currency(column.value, :precision => 0) : number_with_delimiter(column.value) %>
-            $("#ward_row_div_<%= row.id %>").html("<p class=\"absolute_value ward_absolute_value\"><%= value %></p>");
+            $("#ward<%= which_ward %>_row_div_<%= row.id %>").html("<p class=\"absolute_value ward<%= which_ward %>_absolute_value\"><%= value %></p>");
         <% end %>
     <% end %>
     <% category.tables.each do |table| %>
@@ -13,7 +13,7 @@ function drawChartsForWard() {
                 <% column = ward.column_for(row) %>
                 values.push({name: '<%= escape_javascript(row.name) %>', value: <%= column.value %>})
             <% end %>
-            drawPie('ward_table_div_<%= table.id %>', values);
+            drawPie('ward<%= which_ward %>_table_div_<%= table.id %>', values);
         <% elsif table.table_type == Table::PERCENT_TYPE %>
             var values = new Array();
             <% total_column = ward.column_for(table.total_row) %>
@@ -22,8 +22,8 @@ function drawChartsForWard() {
                 values.push({name: '<%= escape_javascript(row.name) %>',
                              value: <%= number_with_precision(((column.value*1.0) / total_column.value) * 100, :precision => 1) %>})
             <% end %>
-            drawColumn('ward_table_div_<%= table.id %>', '', 'Percent', values);
+            drawColumn('ward<%= which_ward %>_table_div_<%= table.id %>', '', 'Percent', values);
         <% end %>
     <% end %>
-    $("#ward_name").html("<%= ward.name %>");
+    $("#ward<%= which_ward %>_name").html("<%= ward.name %>");
 }
