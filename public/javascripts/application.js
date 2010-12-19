@@ -39,6 +39,7 @@ function drawColumn(div, x_axis, y_axis, values) {
 
 function setupCategoryLinks() {
     $(".category_link").click(function() {
+        $("#loading_dialog").show();
         $(".table_name").fadeTo(200, 0);
         $(".table_row").fadeTo(200, 0);
         $.post($(this).attr("href"), $(this).serialize(), null, "script");
@@ -57,4 +58,5 @@ $(document).ready(function () {
         $("#click_me").show("fast");
     });
     setupCategoryLinks();
+    $("#loading_dialog").hide();
 });

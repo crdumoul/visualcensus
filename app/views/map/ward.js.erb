@@ -3,6 +3,8 @@
 function doStuff() {
     drawChartsForWard();
     $("#ward_name").fadeTo(200, 1);
-    $(".ward_table_div").fadeTo(200, 1);
+    $(".ward_table_div").fadeTo(200, 1, function() {
+        $("#loading_dialog").hide();
+    });
 }
 setTimeout(doStuff, 100);

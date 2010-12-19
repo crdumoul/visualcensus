@@ -8,8 +8,10 @@ function setCategory() {
         <%= render :partial => 'ward_charts', :locals => {:category => @category, :ward => @ward } %>
         drawChartsForWard();
     <% end %>
-    $(".table_row").fadeTo(200, 1);
     $(".table_name").fadeTo(200, 1);
+    $(".table_row").fadeTo(200, 1, function() {
+        $("#loading_dialog").hide();
+    });
     setupCategoryLinks();
 }
 setTimeout(setCategory, 100);
