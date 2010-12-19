@@ -1,8 +1,24 @@
 <div id="map_div">
     <div id="map_canvas"></div>
-    <p id="click_me">Click on a ward</p>
-    <%= image_tag 'down_chevron.jpg', :id => 'minimizer' %>
+    <div id="which_ward_div">
+        <p id="instructions">Click above to select a ward. Right click for Ottawa</p>
+        <table>
+            <tr>
+                <td>Select:</td>
+                <td>
+                    <%= label_tag 'Ward 1' %>
+                    <%= radio_button_tag 'which_ward', '1', false, :id => 'which_ward1_radio', :class => 'which_ward_radio' %>
+                </td>
+                <td>
+                    <%= label_tag 'Ward 2' %>
+                    <%= radio_button_tag 'which_ward', '2', false, :id => 'which_ward2_radio', :class => 'which_ward_radio' %>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
+<%= image_tag 'down_chevron.jpg', :id => 'minimizer' %>
+
 <h1 id="census_title">Ottawa 2006 Census Data</h1>
 <ul id="tab_list">
     <%= render :partial => 'category_tabs', :locals => {:categories => @categories, :current_category => @current_category} %>

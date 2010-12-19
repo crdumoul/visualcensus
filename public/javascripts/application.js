@@ -47,16 +47,29 @@ function setupCategoryLinks() {
     });
 }
 
+var which_ward = '2';
+
 $(document).ready(function () {
     $("#minimizer").toggle(function() {
         $("#map_div").animate({width:"0px", height:"0px"}, "fast");
         $(this).attr({src:"/images/up_chevron.jpg"});
-        $("#click_me").hide("fast");
+        $("#which_ward_div").hide();
     },function() {
         $(this).attr({src:"/images/down_chevron.jpg"});
-        $("#map_div").animate({width:"400px", height:"200px"}, "fast");
-        $("#click_me").show("fast");
+        $("#map_div").animate({width:"400px", height:"300px"}, "fast");
+        $("#which_ward_div").show();
     });
     setupCategoryLinks();
     $("#loading_dialog").hide();
+
+    if(which_ward == '1') {
+        $("#which_ward1_radio").attr("checked", true);
+    } else {
+        $("#which_ward2_radio").attr("checked", true);
+    }
+
+    $(".which_ward_radio").click(function() {
+        which_ward = $(this).attr("value");
+    });
+
 });

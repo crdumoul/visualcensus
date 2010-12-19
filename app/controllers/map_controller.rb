@@ -14,8 +14,8 @@ class MapController < ApplicationController
     @current_category = session[:category_id]
     @categories = Category.all
     @wards = Ward.find(:all, :conditions => "name != 'Ottawa'")
-
     get_wards
+    @ottawa = Ward.find_by_name('Ottawa')
   end
 
   def ward

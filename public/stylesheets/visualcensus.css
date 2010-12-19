@@ -1,19 +1,3 @@
-
-#map_div {
-    width: 400px;
-    height: 200px;
-    position: fixed;
-    bottom: 25px;
-    right: 10px;
-    border-style: solid;
-    border-width: 18px;
-    border-color: #000066;
-    border-radius: 20px;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    z-index: 10;
-}
-
 #census_title {
     text-align: center;
     margin: 0;
@@ -21,17 +5,45 @@
     font-size: 2.5em;
 }
 
-#minimizer {
-    margin: 20px;
-    float: right;
-    width: 20px;
-    height: 20px;
+#map_div {
+    width: 400px;
+    height: 300px;
+    position: fixed;
+    bottom: 30px;
+    right: 10px;
+    border-style: solid;
+    border-width: 18px;
+    border-color: #000066;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    background-color: #FFFFFF;
+    z-index: 10;
 }
 
-#click_me {
-    margin: 20px;
-    float: left;
-    font-size: 1.25em;
+#map_canvas {
+    height: 80%;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #000066;
+}
+
+#which_ward_div {
+    height: 20%;
+}
+
+#instructions {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+#minimizer {
+    position: fixed;
+    bottom: 5px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 .name {
