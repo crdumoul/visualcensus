@@ -1,4 +1,9 @@
 class MapController < ApplicationController
+  def get_wards
+    @ward1 = session[:ward1_id] ? Ward.find(session[:ward1_id]) : Ward.find_by_name('Ottawa')
+    @ward2 = Ward.find(session[:ward2_id]) if session[:ward2_id]
+  end
+
   def index
     if session[:category_id]
       @category = Category.find(session[:category_id])
@@ -10,15 +15,21 @@ class MapController < ApplicationController
     @categories = Category.all
     @wards = Ward.find(:all, :conditions => "name != 'Ottawa'")
 
-    @ward2 = Ward.find(session[:ward2_id]) if session[:ward2_id]
-    @ward1 = Ward.find_by_name('Ottawa')
+    get_wards
   end
 
   def ward
-    session[:ward2_id] = params[:id]
+    @which_ward = params[:which_ward]
+    if @which_ward == '1'
+        session[:ward1_id] = params[:id]
+        @ward = Ward.find(session[:ward1_id])
+    else
+        session[:ward2_id] = params[:id]
+        @ward = Ward.find(session[:ward2_id])
+    end
+
     @category = Category.find(session[:category_id])
-    @ward2 = Ward.find(session[:ward2_id])
-    @which_ward = 2
+
     respond_to do |format|
       format.js
     end
@@ -29,8 +40,7 @@ class MapController < ApplicationController
     @current_category = session[:category_id]
     @categories = Category.all
     @category = Category.find(session[:category_id])
-    @ward2 = Ward.find(session[:ward2_id]) if session[:ward2_id]
-    @ward1 = Ward.find_by_name('Ottawa')
+    get_wards
     respond_to do |format|
       format.js
     end
