@@ -9,6 +9,7 @@ class SetCategories < ActiveRecord::Migration
 
   def self.up
     set_category MigrationStrings::POPULATION_TABLES, Category.find_by_name('Population')
+    set_category MigrationStrings::DIVERSITY_TABLES, Category.find_by_name('Diversity')
     set_category MigrationStrings::HOUSING_TABLES, Category.find_by_name('Housing')
     set_category MigrationStrings::EMPLOYMENT_TABLES, Category.find_by_name('Employment')
     set_category MigrationStrings::INCOME_TABLES, Category.find_by_name('Income')

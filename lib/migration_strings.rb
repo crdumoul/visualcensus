@@ -52,12 +52,15 @@ module MigrationStrings
     TABLE_NAMES['Male, total'],
     TABLE_NAMES['Female, total'],
     TABLE_NAMES['Total number of children at home'],
-    TABLE_NAMES['Total Population by Mother Tongue'],
     TABLE_NAMES['Total - Mobility status 1 year ago'],
     TABLE_NAMES['Total - Mobility status 5 years ago'],
-    TABLE_NAMES['Total population by immigrant status and place of birth'],
-    TABLE_NAMES['Total population by ethnic origin'],
     TABLE_NAMES['Total population 15 years and over by highest certificate, diploma or degree']
+  ]
+
+  DIVERSITY_TABLES = [
+    TABLE_NAMES['Total Population by Mother Tongue'],
+    TABLE_NAMES['Total population by immigrant status and place of birth'],
+    TABLE_NAMES['Total population by ethnic origin']
   ]
 
   HOUSING_TABLES = [

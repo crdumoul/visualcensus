@@ -1,6 +1,6 @@
 class AddCategories < ActiveRecord::Migration
   def self.up
-    names = %w(Population Housing Employment Income)
+    names = %w(Population Diversity Housing Employment Income)
     names.each {|name| Category.create(:name => name)}
   end
 
