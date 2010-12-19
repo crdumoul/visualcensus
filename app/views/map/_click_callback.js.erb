@@ -1,0 +1,5 @@
+$("#loading_dialog").show();
+$("#ward".concat(which_ward, "_name")).fadeTo(200, 0);
+$(".ward".concat(which_ward, "_table_div")).fadeTo(200, 0, function() {
+   $.post("/map/ward/<%= ward.id %>?which_ward=".concat(which_ward), null, null, "script");
+});
