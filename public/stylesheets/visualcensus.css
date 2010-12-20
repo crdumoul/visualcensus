@@ -120,13 +120,13 @@ ul#tab_list li a:link {
     text-decoration: none;
 }
 
-.active_tab {
+.active_tab, .active_tab_li {
     color: #FFFFFF;
     background-color: #000066;
     border-color: #000066;
 }
 
-.inactive_tab {
+.inactive_tab, .inactive_tab_li {
     color: #CCCCCC;
     background-color: #000033;
     border-color: #000033;
