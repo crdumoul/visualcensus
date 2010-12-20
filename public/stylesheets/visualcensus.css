@@ -17,7 +17,7 @@
     border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
-    background-color: #FFFFFF;
+    background-color: #DDDDFF;
     z-index: 10;
 }
 
@@ -177,6 +177,7 @@ ul#tab_list li a:link {
     -webkit-border-radius: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
+    background-color: #DDDDFF;
 }
 
 .ward_names_table {

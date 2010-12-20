@@ -24,7 +24,8 @@ function drawPie(div, values) {
     chart.draw(data, {width: 500, height: 400, legend: 'none',
                       chartArea: {width: '80%', height: '100%'},
                       pieSliceTextStyle: {color: 'black', fontSize: 12},
-                      tooltipTextStyle: {color: 'black', fontSize: 16}});
+                      tooltipTextStyle: {color: 'black', fontSize: 16},
+                      backgroundColor: '#DDDDFF'});
 }
 
 function drawColumn(div, x_axis, y_axis, values) {
@@ -34,7 +35,7 @@ function drawColumn(div, x_axis, y_axis, values) {
                       chartArea: {left:'10%', top:'5%', width: '90%', height: '75%'},
                       hAxis: {title: x_axis, slantedTextAngle: 60, textStyle: {fontSize: 16}},
                       vAxis: {title: y_axis}, textStyle: {fontSize: 16},
-                      tooltipTextStyle: {fontSize: 16}});
+                      tooltipTextStyle: {fontSize: 16}, backgroundColor: '#DDDDFF'});
 }
 
 function setupCategoryLinks() {

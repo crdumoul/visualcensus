@@ -42,9 +42,10 @@
                fillColor: "#FF0000",
                fillOpacity: 0.35
            });
+
            <%= wardName %>.setMap(map);
            google.maps.event.addListener(<%= wardName %>, 'mouseover', function() {
-               <%= wardName %>.setOptions({fillOpacity: 0.7})
+               <%= wardName %>.setOptions({fillOpacity: 0.7});
            });
            google.maps.event.addListener(<%= wardName %>, 'mouseout', function() {
                <%= wardName %>.setOptions({fillOpacity: 0.35})
