@@ -51,6 +51,9 @@ function setupCategoryLinks() {
 var which_ward = '2';
 
 $(document).ready(function () {
+    $("#loading_dialog").hide();
+    $("#help_div").hide();
+
     $("#minimizer").toggle(function() {
         $("#map_div").animate({width:"0px", height:"0px"}, "fast");
         $(this).attr({src:"/images/up_chevron.jpg"});
@@ -61,7 +64,6 @@ $(document).ready(function () {
         $("#which_ward_div").show();
     });
     setupCategoryLinks();
-    $("#loading_dialog").hide();
 
     if(which_ward == '1') {
         $("#which_ward1_radio").attr("checked", true);
@@ -73,4 +75,12 @@ $(document).ready(function () {
         which_ward = $(this).attr("value");
     });
 
+    $("#close_icon").click(function() {
+        $("#help_div").hide("fast");
+    });
+
+    $("#about_link").click(function() {
+        $("#help_div").show("fast");
+        return false;
+    });
 });

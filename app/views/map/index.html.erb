@@ -4,7 +4,7 @@
         <p id="instructions">Click above to select a ward. Right click for Ottawa</p>
         <table>
             <tr>
-                <td>Select:</td>
+                <td>Selecting:</td>
                 <td>
                     <%= label_tag 'Ward 1' %>
                     <%= radio_button_tag 'which_ward', '1', false, :id => 'which_ward1_radio', :class => 'which_ward_radio' %>
@@ -18,6 +18,49 @@
     </div>
 </div>
 <%= image_tag 'down_chevron.jpg', :id => 'minimizer' %>
+
+<div id="help_div">
+    <h3 class="help_text">Overview</h3>
+    <p class="help_text">
+        This application displays census data by city ward.
+        Data was taken from
+        <a href="http://www.ottawa.ca/residents/statistics/census/wards/index_en.html">
+            2006 census data on the City of Ottawa website.
+        </a>
+    </p>
+    <p class="help_text">
+        Being able to visualize the census data and compare wards to each other or
+        to the city as a whole allows for the identification of the unique demographic
+        characteristics of each ward. This can be useful in targetting products and
+        services appropriately for different areas of the city.
+    </p>
+
+    <h3 class="help_text">Selecting Wards</h3>
+    <p class="help_text">
+        Click on a ward on the map to have that ward's data displayed. Right click
+        on any ward to display the data for the entire City of Ottawa.
+    </p>
+    <p class="help_text">
+        When the
+        "Ward 1" radio button is selected, the data on the left will be replaced
+        by the newly selected ward. When the "Ward 2" radio button is selected, the
+        data on the right will be replaced.
+    </p>
+
+    <h3 class="help_text">Minimizing the Map</h3>
+    <p class="help_text">
+        Click on the down arrow under the bottom right corner of the map to minimize
+        it and prevent it from obstructing the data. When the map is minimized, click
+        on the up arrow to restore it.
+    </p>
+
+    <h3 class="help_text">Categories</h3>
+    <p class="help_text">
+        Clicking on the tabs across the top of the page will display different
+        categories of data.
+    </p>
+    <%= image_tag '/images/close.png', :id => 'close_icon' %>
+</div>
 
 <h1 id="census_title">Ottawa 2006 Census Data</h1>
 <ul id="tab_list">

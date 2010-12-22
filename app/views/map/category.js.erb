@@ -1,6 +1,10 @@
 
 function setCategory() {
     $("#graph_div").html("<%= escape_javascript(render(:partial => 'graph_table', :locals => {:category => @category})) %>");
+    $("#about_link").click(function() {
+        $("#help_div").show("fast");
+        return false;
+    });
     $("#tab_list").html("<%= escape_javascript(render(:partial => 'category_tabs', :locals => {:categories => @categories, :current_category => @current_category})) %>");
     <%= render :partial => 'ward_charts', :locals => {:category => @category, :ward => @ward1, :which_ward => 1 } %>
     drawChartsForWard1();
