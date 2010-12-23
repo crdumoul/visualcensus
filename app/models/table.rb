@@ -9,7 +9,7 @@ class Table < ActiveRecord::Base
 
   def regular_rows
     Row.find(:all,
-             :conditions => ['table_id = ? and row_type = ?', id, Row::NORMAL_TYPE],
+             :conditions => ['table_id = ? and row_type = ? and name not like "% rate"', id, Row::NORMAL_TYPE],
              :order => 'id')
   end
 
