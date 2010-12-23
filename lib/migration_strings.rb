@@ -53,8 +53,7 @@ module MigrationStrings
     TABLE_NAMES['Female, total'],
     TABLE_NAMES['Total number of children at home'],
     TABLE_NAMES['Total - Mobility status 1 year ago'],
-    TABLE_NAMES['Total - Mobility status 5 years ago'],
-    TABLE_NAMES['Total population 15 years and over by highest certificate, diploma or degree']
+    TABLE_NAMES['Total - Mobility status 5 years ago']
   ]
 
   DIVERSITY_TABLES = [
@@ -72,6 +71,7 @@ module MigrationStrings
   ]
 
   EMPLOYMENT_TABLES = [
+    TABLE_NAMES['Total population 15 years and over by highest certificate, diploma or degree'],
     TABLE_NAMES['Total population 15 years and over by labour force activity'],
     TABLE_NAMES['Total labour force 15 years and over by occupation'],
     TABLE_NAMES['Total employment within ward by major sectors*'],
