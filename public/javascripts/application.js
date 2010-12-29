@@ -56,10 +56,10 @@ $(document).ready(function () {
 
     $("#minimizer").toggle(function() {
         $("#map_div").animate({width:"0px", height:"0px"}, "fast");
-        $(this).attr({src:"/images/up_chevron.jpg"});
+        $(this).attr({src:"/images/up_chevron.png"});
         $("#which_ward_div").hide();
     },function() {
-        $(this).attr({src:"/images/down_chevron.jpg"});
+        $(this).attr({src:"/images/down_chevron.png"});
         $("#map_div").animate({width:"400px", height:"300px"}, "fast");
         $("#which_ward_div").show();
     });
